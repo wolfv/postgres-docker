@@ -1,0 +1,17 @@
+[workspace]
+authors = ["Wolf Vollprecht <w.vollprecht@gmail.com>"]
+channels = ["conda-forge", "https://prefix.dev/pg-forge"]
+name = "postgres-deploy"
+platforms = ["osx-arm64", "linux-64"] #, "linux-aarch64"]
+version = "0.1.0"
+
+[tasks]
+build-docker = "docker buildx build --platform linux/arm64 -t postgres-deploy ."
+
+[dependencies]
+postgresql = "14.*"
+pg_cron = ">=1.6.5,<2"
+pg_timescaledb = ">=2.19.0,<3"
+
+[target.linux.dependencies]
+gosu = "*"

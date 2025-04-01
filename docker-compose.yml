@@ -1,0 +1,20 @@
+services:
+  # A PostgreSQL database that is used for the backend data
+  backend_database:
+    # This is the same image that is used in our cloud database instances
+    image: "postgres-deploy:latest"
+    ports:
+      - 5432:5432
+    volumes:
+      - backend-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: prefix
+      POSTGRES_PASSWORD: prefix
+      POSTGRES_DB: backend
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+networks:
+  intranet:
+
+volumes:
+  backend-db:
