@@ -31,6 +31,20 @@ COPY --from=build /shell-hook.sh /shell-hook.sh
 WORKDIR /app
 EXPOSE 5432
 
+# make the "en_US.UTF-8" locale so postgres will be utf-8 enabled by default
+RUN set -eux; \
+	if [ -f /etc/dpkg/dpkg.cfg.d/docker ]; then \
+# if this file exists, we're likely in "debian:xxx-slim", and locales are thus being excluded so we need to remove that exclusion (since we need locales)
+		grep -q '/usr/share/locale' /etc/dpkg/dpkg.cfg.d/docker; \
+		sed -ri '/\/usr\/share\/locale/d' /etc/dpkg/dpkg.cfg.d/docker; \
+		! grep -q '/usr/share/locale' /etc/dpkg/dpkg.cfg.d/docker; \
+	fi; \
+	apt-get update; apt-get install -y --no-install-recommends locales; rm -rf /var/lib/apt/lists/*; \
+	echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen; \
+	locale-gen; \
+	locale -a | grep 'en_US.utf8'
+ENV LANG en_US.utf8
+
 # make the sample config easier to munge (and "correct by default")
 # RUN set -eux; \
 # 	cp -v /usr/local/share/postgresql/postgresql.conf.sample /usr/local/share/postgresql/postgresql.conf.sample.orig; \
