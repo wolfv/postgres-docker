@@ -27,7 +27,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/ncurses-6.5-h2d0b736_3.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/openssl-3.4.1-h7b32b05_0.conda
       - conda: https://prefix.dev/pg-forge/linux-64/pg_cron-1.6.5-h7b448bf_0.conda
-      - conda: https://prefix.dev/pg-forge/linux-64/pg_timescaledb-2.19.0-h7b448bf_0.conda
+      - conda: https://prefix.dev/pg-forge/linux-64/pg_timescaledb-2.19.0-h7b448bf_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/postgresql-14.17-hcf4b71c_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/readline-8.2-h8c095d6_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/tzcode-2025b-hb9d3cd8_0.conda
@@ -54,7 +54,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/ncurses-6.5-ha32ae93_3.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/openssl-3.4.1-hd08dc88_0.conda
       - conda: https://prefix.dev/pg-forge/linux-aarch64/pg_cron-1.6.5-h674477f_0.conda
-      - conda: https://prefix.dev/pg-forge/linux-aarch64/pg_timescaledb-2.19.0-h674477f_0.conda
+      - conda: https://prefix.dev/pg-forge/linux-aarch64/pg_timescaledb-2.19.0-h674477f_1.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/postgresql-14.17-h876e5f4_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/readline-8.2-h8382b9d_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/tzcode-2025b-h86ecc28_0.conda
@@ -74,7 +74,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/ncurses-6.5-h5e97a16_3.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/openssl-3.4.1-h81ee809_0.conda
       - conda: https://prefix.dev/pg-forge/osx-arm64/pg_cron-1.6.5-h85abe13_0.conda
-      - conda: https://prefix.dev/pg-forge/osx-arm64/pg_timescaledb-2.19.0-h85abe13_0.conda
+      - conda: https://prefix.dev/pg-forge/osx-arm64/pg_timescaledb-2.19.0-h85abe13_1.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/postgresql-14.17-h6516a02_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/readline-8.2-h1d1bf99_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/tzcode-2025b-h5505292_0.conda
@@ -607,33 +607,34 @@ packages:
   license: PostgreSQL
   size: 32815
   timestamp: 1743438830863
-- conda: https://prefix.dev/pg-forge/linux-64/pg_timescaledb-2.19.0-h7b448bf_0.conda
-  sha256: e83a6152a6a3a3980561587c58fdc904d101bc417ef001940707db512cd72b90
+- conda: https://prefix.dev/pg-forge/linux-64/pg_timescaledb-2.19.0-h7b448bf_1.conda
+  sha256: 97d6437b78d97839b22fba2a9f04a74db26e372bef2a741bd3d1dc5e8bb667f9
   depends:
   - libgcc >=14
+  - libpq >=14.17,<15.0a0
   - openssl >=3.4.1,<4.0a0
-  - libpq >=14.12,<15.0a0
-  license: Apache-2.0
-  size: 421881
-  timestamp: 1743438826785
-- conda: https://prefix.dev/pg-forge/linux-aarch64/pg_timescaledb-2.19.0-h674477f_0.conda
-  sha256: 329902caff6c3c860e7b098f2ebafea6516767dda20ffd95340fbb4b671a3600
+  license: LicenseRef-Timescale
+  size: 778348
+  timestamp: 1743513300126
+- conda: https://prefix.dev/pg-forge/linux-aarch64/pg_timescaledb-2.19.0-h674477f_1.conda
+  sha256: 4c3eb226f7a88309861df5fd989b7312b70cdde5d9c6a53104fb0275096415dd
   depends:
   - libgcc >=14
-  - libpq >=14.12,<15.0a0
+  - libpq >=14.17,<15.0a0
   - openssl >=3.4.1,<4.0a0
-  - libpq >=14.12,<15.0a0
-  license: Apache-2.0
-  size: 438281
-  timestamp: 1743444036440
-- conda: https://prefix.dev/pg-forge/osx-arm64/pg_timescaledb-2.19.0-h85abe13_0.conda
-  sha256: 5ff5e9beb2fb7a4a85dff150905b73249fba9e6539d1fe080c0f16b0a56200c1
+  - libpq >=14.17,<15.0a0
+  license: LicenseRef-Timescale
+  size: 778656
+  timestamp: 1743513300377
+- conda: https://prefix.dev/pg-forge/osx-arm64/pg_timescaledb-2.19.0-h85abe13_1.conda
+  sha256: 09054f39b05053dfd3407343493a04e2b526ee8e3969c8be397b17b4712910f2
   depends:
+  - libpq >=14.17,<15.0a0
   - openssl >=3.4.1,<4.0a0
-  - libpq >=14.12,<15.0a0
-  license: Apache-2.0
-  size: 358672
-  timestamp: 1743438830867
+  - libpq >=14.17,<15.0a0
+  license: LicenseRef-Timescale
+  size: 668669
+  timestamp: 1743513299604
 - conda: https://conda.anaconda.org/conda-forge/linux-64/postgresql-14.17-hcf4b71c_0.conda
   sha256: 05535bd836feb21f21d14c01042574cbec04d5c42b205f469f174f468ebd1377
   md5: 2421a13ccc7e87a515782df67eb834df
