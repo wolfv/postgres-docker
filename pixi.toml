@@ -5,6 +5,8 @@ name = "postgres-deploy"
 platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
 version = "0.1.0"
 
+conda-pypi-map = { "https://prefix.dev/pg-forge" = "mapping.json" }
+
 [tasks]
 build-docker = "docker buildx build --platform linux/arm64 -t postgres-deploy ."
 
@@ -12,6 +14,11 @@ build-docker = "docker buildx build --platform linux/arm64 -t postgres-deploy ."
 postgresql = "14.*"
 pg_cron = ">=1.6.5,<2"
 pg_timescaledb = ">=2.19.0,<3"
+psycopg2 = { version = "2.*", channel = "https://prefix.dev/pg-forge" }
+python = "3.12.*"
 
 [target.linux.dependencies]
 gosu = "*"
+
+[pypi-dependencies]
+barman = { version = ">=3.12,<3.13", extras = ["cloud", "azure", "snappy", "google", "zstandard", "lz4"] }
