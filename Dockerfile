@@ -43,13 +43,15 @@ RUN set -eux; \
 	echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen; \
 	locale-gen; \
 	locale -a | grep 'en_US.utf8'
-ENV LANG en_US.utf8
+ENV LANG=en_US.utf8
+
+ENV PREFIX=/app/.pixi/envs/default
 
 # make the sample config easier to munge (and "correct by default")
-# RUN set -eux; \
-# 	cp -v /usr/local/share/postgresql/postgresql.conf.sample /usr/local/share/postgresql/postgresql.conf.sample.orig; \
-# 	sed -ri "s!^#?(listen_addresses)\s*=\s*\S+.*!\1 = '*'!" /usr/local/share/postgresql/postgresql.conf.sample; \
-# 	grep -F "listen_addresses = '*'" /usr/local/share/postgresql/postgresql.conf.sample
+RUN set -eux; \
+	cp -v ${PREFIX}/share/postgresql.conf.sample ${PREFIX}/share/postgresql.conf.sample.orig; \
+	sed -ri "s!^#?(listen_addresses)\s*=\s*\S+.*!\1 = '*'!" ${PREFIX}/share/postgresql.conf.sample; \
+	grep -F "listen_addresses = '*'" ${PREFIX}/share/postgresql.conf.sample
 
 RUN install --verbose --directory --owner postgres --group postgres --mode 3777 /var/run/postgresql
 
